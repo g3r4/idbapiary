@@ -1,0 +1,205 @@
+FORMAT: 1A
+HOST: http://idb.apiblueprint.org/
+
+# IDB API
+
+IDB API is an API which exposes data so it can be used as a consumable for the new site.
+
+
+# Group Countries   
+
+## Country [/{version}/countries/{product_id}]
+A country contains information about speficic data the IDB publishes about it.
+
++ Parameters
+    + version (string, optional)
+    
+        The version of the endpoint.
+        
+        + Default: `v1`
+        
+    + product_id (string, optional)
+
+        The ID of the desired country.
+        
+
++ Attributes (Country Base)
+    + product_id: 99 (number, required)
+    
+
+### Retrieve a Country [GET]
+Retrieves the country with the given ID.
+
++ Response 200 (application/json)
+    + Attributes (Country)
+
+## Countries [/{version}/countries{?limit}]
+
++ Attributes (array[Country])
+
+### List all Countries [GET]
+Returns a list of your countries.
+
++ Parameters
+    + version (string, optional)
+    
+        The version of the endpoint.
+        
+        + Default: `v1`
+        
+    + limit (number, optional)
+
+        A limit on the number of objects to be returned. Limit can range
+        between 1 and 100 items.
+
+        + Default: `10`
+
++ Response 200 (application/json)
+    + Attributes (Countries)
+
+## Retrieve Country Changes [/{version}/countries-changes/{product_id}]
+Shows which fields should be updated for a specific country.
+
++ Parameters
+    + version (string, optional)
+    
+        The version of the endpoint.
+        
+        + Default: `v1`
+        
+    + product_id (string, optional)
+
+        The ID of the desired country.
+        
+
++ Attributes (Country Changes Base)
+    + product_id: 99 (number, required)
+   
+   
+
+### Retrieve changes for a Country [GET]
+Retrieves the country with the given ID.
+
++ Response 200 (application/json)
+    + Attributes (Country Changes Base)
+
+## Retrieve Countries Changes [/{version}/countries-changes{?limit}]
+
++ Attributes (array[Retrieve Country Changes])
+
+### Retrieve changes for all Countries [GET]
+Returns a list of countries with fields that should be updated.
+
++ Parameters
+    + version (string, optional)
+    
+        The version of the endpoint.
+        
+        + Default: `v1`
+        
+    + limit (number, optional)
+
+        A limit on the number of objects to be returned. Limit can range
+        between 1 and 100 items.
+
+        + Default: `10`
+
++ Response 200 (application/json)
+    + Attributes (Retrieve Country Changes)
+    
+# Data Structures
+
+## Country Base (object)
++ country_name_tr (object)
+    - en: Brazil (string)
+        Country name English.
+    - es: Brasil (string)
+        Country name Spanish.
+    
++ country_code: BR (string) 
+
+    Two letter abreviation for the country.
+    
++ country_img: https://iadb.org/images/countries/brazil.png (string)
+
+    URL of the hosted image.
+    
++ country_group_tr (object)
+    - en: SOUTHERN CONE CSC
+        Country group English.
+    - es: CONO SUR CSC
+        Country group Spanish.
+    
++ country_overview_tr (object)
+    - en: The Bank works with the three levels of government, focusing on subnational agencies in particular Issues such as regional cooperation and integration, respect for biodiversity, and efforts to reduce regional economic  (string)
+        Country overview English.
+    - es: El Banco actúa con los tres niveles de gobierno, enfocándose en las entidades subnacionales. Los temas de cooperación e integración regional, respeto a la biodiversidad, así como la búsqueda de la reducción de las (string)
+        Country overview Spanish.
+
++ country_membership_tr (object)
+    - en: Brazil is one of the founding member countries of the IDB. Like all the shareholders, Brazil appoints a Governor, who represents the country on the Board of Governors. (string)
+        Country membership English.
+    - es: Brasil es uno de los países miembros fundadores del BID. Como el resto de los accionistas, Brasil designa a un gobernador que representa al país en la Asamblea de Gobernadores. (string)
+        Country membership Spanish.
+    
++ country_downloads_tr (object)
+    - en (array)
+        + http://www.iadb.org/document.cfm?id=40167831 (string)
+        + http://www.iadb.org/document.cfm?id=40167832 (string)
+    - es (array)
+        + http://www.iadb.org/document.cfm?id=40167822 (string)
+        + http://www.iadb.org/document.cfm?id=40167823 (string)
+
++ country_data (Country Data)
+
++ country_loans (Country Loans By Sector)
+
+## Country Data (object)
+
++ country_gdp: 2.49 (number)
+
+    GDP: REAL INDEX, YR ON YR GROWTH, %.
+    
++ country_exports: 11.94 (number)
+
+    TOTAL EXPORTS (BOP): % OF GDP.
+    
++ country_revenues: 37.4 (number)
+
+    REVENUES: % OF GDP.
+    
++ country_cpi: 6.33 (number)
+
+    CPI: ANNUAL AVERAGE INFLATION, %
+
++ country_unemployment: 8.81 (number)
+
+    UNEMPLOYMENT: RATE, ANNUAL AVERAGE, %.
+
+## Country Loans By Sector (object)
+
++ total_loans: 12.19 (number)
+
++ transport: 4297.664 (number)
+
++ water_and_sanitation: 2268.19113 (number)
+
+## Country Changes Base(object) 
+
++ country_name_tr: false (boolean)
+  
++ country_code: false (boolean) 
+
++ country_img: false (boolean)
+
++ country_group_tr: false (boolean)
+    
++ country_overview_tr: true (boolean)
+
++ country_membership_tr: false (boolean)
+    
++ country_downloads_tr: false (boolean)
+
++ country_data: false (boolean)
+
++ country_loans: false (boolean)
